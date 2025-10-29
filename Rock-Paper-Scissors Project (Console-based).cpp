@@ -42,6 +42,16 @@ short RandomNumber(short From, short To) {
     return RandNum;
 }
 
+// returns either 1 or 3 randomly
+short RandomNumber() {
+    short RandNum = 0;
+    do {
+        RandNum = RandomNumber(1, 3);
+    } while (RandNum == 2);
+
+    return RandNum;
+}
+
 // Reads difficulty level from user
 enDifficultyLevel ReadDifficultyLevel() {
     short DifficultyLevel = 1;
@@ -91,6 +101,8 @@ enGameChoice GetComputerChoice(enDifficultyLevel DifficultyLevel, short RoundNum
                 return enGameChoice(RandomNumber(2, 3));
             else if (Player1Choice == Scissors)
                 return enGameChoice(RandomNumber(1, 2));
+            else if (Player1Choice == Paper)
+                return enGameChoice(RandomNumber());
         }
     default:
         return enGameChoice(RandomNumber(1, 3));
